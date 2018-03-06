@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Indice.Models.Usuarios>
+
+ <h4>Todos os Usuarios</h4>
+<p>
+    @Html.ActionLink("Adicionar novo usuario", "Incluirusuario")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+   
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id=item.UsuariosId }) |
+            @Html.ActionLink("Deleta", "Deleta", new { id=item.UsuariosId }, new { onclick ="return confirm('Tem certeza que deseja excluir?');" })
+        </td>
+    </tr>
+}
+
+</table>
